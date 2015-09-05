@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.trung.goodstore.model.Role" table="Phanquyen">
+		<id name="id" column="Maquyen" >
+			<generator class="native" />
+		</id>
+		<property name="name" length="48" not-null="true" column="Ten"/>
+		<property name="desc" column="Mota"/>
+	</class>
+
+</hibernate-mapping>

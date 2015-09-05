@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class table="sanpham" name="com.trung.goodstore.model.Product">
+		<id name="id" column="masanpham">
+			<generator class="native" />
+		</id>
+		<many-to-one name="category"
+			class="com.trung.goodstore.model.Category" cascade="save-update"
+			outer-join="auto" column="Madanhmuc" not-null="true" lazy="false" />
+		<many-to-one name="manufacturer" lazy="false"
+			class="com.trung.goodstore.model.Manufacturer" cascade="save-update"
+			outer-join="auto" column="Manhasanxuat" />
+		<property name="discount" column="giamgia"></property>
+		<property name="mediumImage" column="anhtrungbinh" />
+		<property name="smallImage" optimistic-lock="true" column="anhnho" />
+		<property name="largeImage" column="anhlon" />
+		<property name="desc" column="mota" type="text" />
+		<property name="height" column="chieucao" />
+		<property name="length" column="chieudai" />
+		<property name="name" length="64" not-null="true" column="ten" />
+		<property name="sort_desc" column="tomtat" />
+		<property name="unit" length="32" column="DVT" />
+		<property name="unitPrice" column="dongia" />
+		<property name="weight" column="trongluong" />
+		<property name="width" column="chieurong" />
+		<property name="stock" column="soluongtrongkho" />
+		<property name="sales" column="soluongdaban" />
+		<property name="cdate" type="date" column="ngaynhap" />
+		<property name="mdate" type="date" column="ngaycapnhat" />
+		<property name="special" column="dacbiet" />
+		<property name="active" column="kichhoat"></property>
+	</class>
+
+</hibernate-mapping>

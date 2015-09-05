@@ -1,0 +1,20 @@
+<html>
+<body>
+<h3>Hi ${user.contact.firstName} &nbsp; ${user.contact.lastName}</h3>
+<p>
+This email has been sent from ${url}
+You have received this email because this email address was used during registration for our website. 
+If you did not register at our website, please disregard this email. 
+You do not need to unsubscribe or take any further action.
+</p>
+------------------------------------------------
+Account Infomation <br/>
+------------------------------------------------
+<p>Username: ${user.username}</p>
+<p>Password: ${password}</p>
+------------------------------------------------
+Thank you for registering and enjoy your stay! 
+
+</body>
+
+</html>

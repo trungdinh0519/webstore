@@ -1,0 +1,30 @@
+DT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 10px 0px 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 10px 0px 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 10px 0px 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 10px 0px 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 10px 0px 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+#ammenu {
+	margin: 20px 0px 0px 50px;
+	font-size:10pt;
+}
+#ammenu DL {
+	FLOAT: left
+}
+#ammenu LI {
+	DISPLAY: block;
+	FONT-SIZE: 0.8em;
+}
+#ammenu A {
+	BACKGROUND: #fff; COLOR: #000; TEXT-DECORATION: none
+}
+

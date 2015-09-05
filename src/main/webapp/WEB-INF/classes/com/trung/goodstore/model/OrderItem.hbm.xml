@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.trung.goodstore.model.OrderItem"
+		dynamic-update="true" dynamic-insert="true" table="dongdonhang">
+		<id name="id" column="maso">
+			<generator class="native" />
+		</id>
+		<many-to-one name="order" lazy="false"
+			class="com.trung.goodstore.model.Order" cascade="save-update"
+			outer-join="auto" column="madonhang" />
+		<many-to-one name="product" column="masanpham" lazy="false"
+			class="com.trung.goodstore.model.Product" cascade="save-update"
+			outer-join="auto" />
+		<property name="quantity" column="soluong" />
+		<property name="price" column="dongia" />
+	</class>
+
+</hibernate-mapping>

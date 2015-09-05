@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:mail.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${database.driver}" />
+		<property name="username" value="${database.user}" />
+		<property name="password" value="${database.password}" />
+		<property name="url" value="${database.url}" />
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>com/trung/goodstore/model/Role.hbm.xml</value>
+				<value>com/trung/goodstore/model/User.hbm.xml</value>
+				<value>
+					com/trung/goodstore/model/Category.hbm.xml
+				</value>
+				<value>
+					com/trung/goodstore/model/Manufacture.hbm.xml
+				</value>
+				<value>com/trung/goodstore/model/Product.hbm.xml</value>
+				<value>com/trung/goodstore/model/Country.hbm.xml</value>
+				
+				<value>
+					com/trung/goodstore/model/Shiprate.hbm.xml
+				</value>
+				<value>
+					com/trung/goodstore/model/ShipMethod.hbm.xml
+				</value>
+				<value>com/trung/goodstore/model/Order.hbm.xml</value>
+				<value>
+					com/trung/goodstore/model/OrderItem.hbm.xml
+				</value>
+				<value>
+					com/trung/goodstore/model/OrderStatus.hbm.xml
+				</value>
+				<value>
+					com/trung/goodstore/model/ProductComment.hbm.xml
+				</value>
+
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<aop:config>
+		<aop:advisor id="managerTx" advice-ref="txAdvice"
+			pointcut="execution(* *..service.*Manager.*(..))" />
+	</aop:config>
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"
+				rollback-for="DataAccessException" />
+			<tx:method name="*" rollback-for="DataAccessException" />
+		</tx:attributes>
+	</tx:advice>
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${mail.host}"></property>
+		<property name="username" value="${mail.username}"></property>
+		<property name="password" value="${mail.password}"></property>
+	</bean>
+	<bean id="mailEngine"
+		class="com.trung.goodstore.service.util.MailEngine">
+		<property name="mailSender" ref="mailSender" />
+		<property name="velocityEngine" ref="velocityEngine"></property>
+	</bean>
+	<!-- Configure Velocity for sending e-mail -->
+	<bean id="velocityEngine"
+		class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+		<property name="resourceLoaderPath">
+			<value>/velocity/</value>
+		</property>
+		<property name="velocityProperties">
+			<props>
+				<prop key="file.resource.loader.cache">false</prop>
+				<prop key="directive.foreach.counter.initial.value">
+					0
+				</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- userCache -->
+	<bean id="userCache"
+		class="org.acegisecurity.providers.dao.cache.EhCacheBasedUserCache">
+		<property name="cache">
+			<bean
+				class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+				<property name="cacheManager">
+					<bean
+						class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+						<property name="configLocation"
+							value="classpath:ehcache.xml" />
+					</bean>
+				</property>
+				<property name="cacheName" value="userCache" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- **Dao Hibernate** -->
+	<bean id="dao"
+		class="com.trung.goodstore.persistence.hibernate.DaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="userDao"
+		class="com.trung.goodstore.persistence.hibernate.UserDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="roleDao"
+		class="com.trung.goodstore.persistence.hibernate.RoleDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="lookupDao"
+		class="com.trung.goodstore.persistence.hibernate.LookupDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="productDao"
+		class="com.trung.goodstore.persistence.hibernate.ProductDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="mfDao"
+		class="com.trung.goodstore.persistence.hibernate.MfDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+
+	</bean>
+	<bean id="countryDao"
+		class="com.trung.goodstore.persistence.hibernate.CountryDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="shipDao"
+		class="com.trung.goodstore.persistence.hibernate.ShipDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="orderDao"
+		class="com.trung.goodstore.persistence.hibernate.OrderDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="pcDao"
+		class="com.trung.goodstore.persistence.hibernate.PCommentDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- **End of Dao Hibvernate** -->
+
+	<!-- **Manager Service** -->
+	<bean id="manager"
+		class="com.trung.goodstore.service.impl.ManagerImpl">
+		<property name="dao" ref="dao"></property>
+	</bean>
+	<bean id="lookupManager"
+		class="com.trung.goodstore.service.impl.LookupManagerImpl">
+		<property name="lookupDao" ref="lookupDao" />
+	</bean>
+	<bean id="roleManager"
+		class="com.trung.goodstore.service.impl.RoleManagerImpl">
+		<property name="roleDao" ref="roleDao" />
+		<property name="dao" ref="dao"></property>
+	</bean>
+	<bean id="userManager"
+		class="com.trung.goodstore.service.impl.UserManagerImpl">
+		<property name="dao" ref="dao"></property>
+		<property name="userDao" ref="userDao" />
+	</bean>
+	
+	<bean id="productManager"
+		class="com.trung.goodstore.service.impl.ProductManagerImpl">
+		<property name="dao" ref="dao" />
+		<property name="productDao" ref="productDao"></property>
+	</bean>
+	<bean id="pcManager"
+		class="com.trung.goodstore.service.impl.PCommentManagerImpl">
+		<property name="dao" ref="dao" />
+		<property name="PCommentDao" ref="pcDao"></property>
+	</bean>
+	<bean id="mfManager"
+		class="com.trung.goodstore.service.impl.MfManagerImpl">
+		<property name="dao" ref="dao" />
+		<property name="mfDao" ref="mfDao"></property>
+	</bean>
+	<bean id="countryManager"
+		class="com.trung.goodstore.service.impl.CountryManagerImpl">
+		<property name="dao" ref="dao"></property>
+		<property name="countryDao" ref="countryDao"></property>
+	</bean>
+	<bean id="shipManager"
+		class="com.trung.goodstore.service.impl.ShipManagerImpl">
+		<property name="dao" ref="dao"></property>
+		<property name="shipDao" ref="shipDao"></property>
+		
+	</bean>
+	<bean id="config" class="com.trung.goodstore.service.Config">
+		<property name="filePath"
+			value="classpath:configs.properties">
+		</property>
+	</bean>
+	<bean id="orderManager"
+		class="com.trung.goodstore.service.impl.OrderManagerImpl">
+		<property name="dao" ref="dao"></property>
+		<property name="orderDao" ref="orderDao"></property>
+		<property name="userDao" ref="userDao"></property>
+
+	</bean>
+
+	<!-- **End of Manager Service** -->
+
+</beans>

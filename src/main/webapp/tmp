@@ -1,0 +1,144 @@
+<!-- 
+	<script type="text/javascript"
+			src="<c:url value='/scripts/jsval.js'/>"></script>
+		<script src="<c:url value="/scripts/prototype.js"/>"
+			type="text/javascript"></script>
+			<div id="container">
+			<jsp:include flush="true" page="/common/header.jsp"></jsp:include>
+			<div id="searchbox" class="green">
+				<h3>
+					<fmt:message key="label.search" />
+				</h3>
+				<ul class="box">
+					<li>
+						<form action="<c:url value="/pages/viewcategory.do"/>"
+							method="post">
+							<input type="hidden" name="method" value="search" />
+							<select name="categoryId">
+								<option value="">
+
+								</option>
+								<c:forEach var="category" items="${categories}">
+									<option value="<c:out value="${category.id }"/>">
+										<c:out value="${category }" />
+									</option>
+								</c:forEach>
+							</select>
+
+							&nbsp;
+							<input type="text" name="keyword" size="30" />
+							&nbsp;&nbsp;
+							<input name="" type="submit" value="T&igrave;m ki&#7871;m">
+							&nbsp;&nbsp;
+							<!--<a href="#"><fmt:message key="label.searchAdvance" /> </a>-->
+<!-- 
+						</form>
+
+					</li>
+				</ul>
+
+			</div>
+			<div class="clear"></div>
+			<div id="left">
+				<page:applyDecorator name="window" page="/pages/catalog.jsp" />
+				<div id="logoleft">
+					<img src="<c:url value="/images/logo.gif"/>" />
+				</div>
+			</div>
+
+			<div id="right">
+				<div class="yellow">
+					<h3><a href="<c:url value="/pages/viewcart.do"/>"> Gi&#7887; h&agrave;ng </a></h3>
+					<ul class="box">
+						<li>Gi&#7887; h&agrave;ng c&oacute;
+
+							<c:out value="${cart.soluong }" />
+
+
+							s&#7843;n ph&#7849;m
+						</li>
+						<li>T&#7893;ng gi&aacute; tr&#7883;  gi&#7887; h&agrave;ng:
+							<fmt:formatNumber value="${cart.subTotal }" pattern="###"></fmt:formatNumber>
+							<fmt:message>label.currency</fmt:message>
+						</li>
+
+						<li>
+							<c:url var="checkUrl" value="/pages/billing.do?mt_code=fillbill"></c:url>
+							<a id="dhang" href="<c:out value="${checkUrl}"/>" >&#272;&#7863;t
+								h&agrave;ng </a>
+						</li>
+					</ul>
+			  </div>
+				<authz:authorize ifNotGranted="ROLE_USER">
+					<div class="yellow">
+						<h3>
+							<fmt:message key="label.login" />
+						</h3>
+						<ul class="box">
+							<form name="loginForm" action="<c:url value='/login_check'/>"
+								method="post">
+								<li>
+									<label>
+										<fmt:message key="label.username" />
+									</label>
+									<input type="text" name="j_username" id="j_username" value="" />
+								</li>
+								<li class="noboder">
+									<label>
+										<fmt:message key="label.password" />
+									</label>
+									<input type="password" name="j_password" id="j_password"
+										value="" />
+								</li>
+								<li>
+									<input type="checkbox" name="rememberMe" />
+									&nbsp;&nbsp;
+									<label>
+										<fmt:message key="label.rememberMe" />
+									</label>
+								</li>
+								<li>
+									<input name="login" type="submit"
+										value="&#272;&#259;ng nh&#7853;p" />
+								</li>
+								<li>
+									<a href="<c:url value="/pages/losspass.jsp"/>"><fmt:message
+											key="label.retrive.lostpassword" /> </a>
+								</li>
+							</form>
+						</ul>
+					</div>
+				</authz:authorize>
+				<authz:authorize ifAnyGranted="ROLE_USER">
+					<div class="yellow">
+						<h3>
+							<fmt:message key="welcome.tilte" />
+						</h3>
+						<ul class="box">
+							<li>
+								<a
+									href="<c:url value="/pages/editProfile.do?method=edit&id="/><authz:authentication operation='username' />"><authz:authentication
+										operation="username" /> </a> &nbsp;&nbsp;&nbsp;|
+
+
+								<a href="<c:url value="/logout.jsp"/>"><fmt:message
+										key="logout.title" /> </a>
+							</li>
+						</ul>
+					</div>
+
+				</authz:authorize>
+
+			</div>
+
+			<div id="content">
+
+				<div id="maincontent">
+					<jsp:include page="/common/messages.jsp" />
+					<decorator:body />
+				</div>
+			</div>
+			<jsp:include flush="true" page="/common/footer.jsp"></jsp:include>
+			 end container 
+		</div>
+ -->

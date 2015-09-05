@@ -1,0 +1,19 @@
+<decorators>
+	<excludes>
+		<pattern>/velocity/*</pattern>
+		
+	</excludes>
+	<decorator name="default" page="/decorator/default.jsp">
+		<pattern>/pages/*</pattern>
+		<pattern>/userpages/*</pattern>
+		<pattern>/index.jsp</pattern>
+	</decorator>
+	<decorator name="login" page="/decorator/loginLayout.jsp">
+		<pattern>/login.jsp</pattern>
+	</decorator>
+	<decorator name="window" page="/decorator/window.jsp"></decorator>
+	<decorator name="adminLayout" page="/decorator/adminLayout.jsp">
+		<pattern>/admin/*</pattern>
+	</decorator>
+
+</decorators>

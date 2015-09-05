@@ -1,0 +1,47 @@
+.psortdesc .title {
+	font-size: 11px;
+	margin-top: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	background-image: url(../images/cam_midle.jpg);
+	padding-left: 5px;
+}
+.pdescription h3 {
+	background-image: url(../images/cam_midle.jpg);
+	background-repeat: repeat-x;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 11pt;
+	font-weight: bold;
+	padding-left: 5px;
+}
+.pdescription .text {
+	padding-left: 10px;
+	
+}
+.pdescription{
+	margin: 0px 0 100px 0;
+	width:98%;
+}
+.psortdesc .psdesc h3 {
+	font-size: 14px;
+}
+
+.psortdesc .img {
+	float: left;
+	width: 30%;
+}
+.psortdesc .psdesc {
+	margin-left: 32%;
+}
+.psortdesc .psdesc ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+.psortdesc .psdesc li {
+	padding-top: 2px;
+	padding-bottom: 3px;
+}

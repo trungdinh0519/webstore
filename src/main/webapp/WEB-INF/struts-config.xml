@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+
+	<form-beans>
+		<form-bean name="userForm"
+			type="com.trung.goodstore.web.form.UserForm" />
+		<form-bean name="UserInfo"
+			type="com.trung.goodstore.web.form.UserForm">
+		</form-bean>
+		<form-bean name="userG"
+			type="com.trung.goodstore.web.form.UserForm">
+		</form-bean>
+		<form-bean name="passForm"
+			type="com.trung.goodstore.web.form.PassForm">
+		</form-bean>
+
+		<form-bean name="lossPass"
+			type="com.trung.goodstore.web.form.LossPassForm" />
+		<form-bean name="productForm"
+			type="com.trung.goodstore.web.form.ProductForm">
+		</form-bean>
+		<form-bean name="categoryForm"
+			type="com.trung.goodstore.web.form.CategoryForm">
+		</form-bean>
+		<form-bean name="mfForm"
+			type="com.trung.goodstore.web.form.ManufacturerForm">
+		</form-bean>
+		<form-bean name="countryForm"
+			type="com.trung.goodstore.web.form.CountryForm">
+		</form-bean>
+		<form-bean name="provinceForm"
+			type="com.trung.goodstore.web.form.ProvinceForm">
+		</form-bean>
+		<form-bean name="shipMethodForm"
+			type="com.trung.goodstore.web.form.ShipMethodForm">
+		</form-bean>
+		<form-bean name="shiprateForm"
+			type="com.trung.goodstore.web.form.ShiprateForm">
+		</form-bean>
+		<form-bean name="cartForm"
+			type="com.trung.goodstore.web.form.ShoppingCartForm">
+		</form-bean>
+		<form-bean name="billingForm"
+			type="com.trung.goodstore.web.form.BillingForm">
+		</form-bean>
+		<form-bean name="shippingForm"
+			type="com.trung.goodstore.web.form.ShippingForm">
+		</form-bean>
+		<form-bean name="chooseMethodForm"
+			type="com.trung.goodstore.web.form.ChooseMethodForm" />
+
+		<form-bean name="configForm"
+			type="com.trung.goodstore.web.form.ConfigForm">
+
+		</form-bean>
+		<form-bean name="creditCardForm"
+			type="com.trung.goodstore.web.form.CreditCardForm">
+		</form-bean>
+
+	</form-beans>
+
+	<global-exceptions />
+	<global-forwards>
+		<forward name="home" path="/home.do" />
+		<forward name="login" path="/pages/login.do" />
+		<forward name="admin" path="/admin/product.do?method=list"></forward>
+	</global-forwards>
+
+	<action-mappings>
+
+		<action path="/pages/completeOrder"
+			type="com.trung.goodstore.web.action.CompleteOrderAction">
+			<forward name="success" path="/pages/receipt.jsp"></forward>
+		</action>
+		<action path="/pages/contact"
+			type="com.trung.goodstore.web.action.ContactAction">
+			<forward name="success" path="/pages/contact.jsp"></forward>
+		</action>
+		<action path="/pages/gioithieu"
+			type="com.trung.goodstore.web.action.GioithieuAction">
+			<forward name="success" path="/pages/gioithieu.jsp"></forward>
+		</action>
+
+		<action path="/saveconfig" name="configForm" input="/config.jsp"
+			type="com.trung.goodstore.web.action.ConfigAction"
+			parameter="mt_code" scope="request" validate="false">
+			<forward name="success" path="/config.jsp"></forward>
+		</action>
+
+		<action path="/pages/home"
+			type="com.trung.goodstore.web.action.StartupAction">
+			<forward name="success" path="/pages/welcome.jsp"></forward>
+		</action>
+		<action path="/pages/Registry" name="userForm" scope="request"
+			parameter="method" type="com.trung.goodstore.web.action.UserAction"
+			validate="false">
+			<forward name="success" path="/pages/signup.jsp" />
+			<forward name="failure" path="/home.do" />
+		</action>
+		<action path="/pages/editProfile" name="UserInfo"
+			scope="request" parameter="method"
+			type="com.trung.goodstore.web.action.UserAction" validate="false">
+			<forward name="edit" path="/pages/editProfile.jsp" />
+			<forward name="failure" path="/home.do" />
+		</action>
+		<action path="/pages/user" name="userForm"
+			input="/pages/signup.jsp"
+			type="com.trung.goodstore.web.action.UserAction" validate="true"
+			scope="request" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success" path="/pages/home.do"></forward>
+			<forward name="failure" path="/pages/signup.jsp"></forward>
+			<forward name="cancel" path="/pages/home.do"></forward>
+		</action>
+		<action path="/pages/profile" name="UserInfo"
+			input="/pages/editProfile.jsp"
+			type="com.trung.goodstore.web.action.UserAction" validate="true"
+			scope="request" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success" path="/pages/home.do"></forward>
+			<forward name="failure" path="/pages/editProfile.jsp"></forward>
+			<forward name="cancel" path="/pages/home.do"></forward>
+		</action>
+		<action path="/userpages/editPass" name="passForm"
+			input="/userpages/editPassword.jsp"
+			type="com.trung.goodstore.web.action.UserAction" validate="true"
+			scope="request" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success" path="/pages/home.do"></forward>
+			<forward name="failure"
+				path="/userpages/editPassword.jsp">
+			</forward>
+			<forward name="cancel" path="/pages/home.do"></forward>
+		</action>
+		<action path="/pages/losspass" name="lossPass"
+			type="com.trung.goodstore.web.action.UserAction"
+			input="/pages/losspass.jsp" scope="request" validate="true"
+			parameter="method">
+			<forward name="success" path="/pages/isemflosspass.jsp" />
+		</action>
+
+		<action path="/pages/viewcategory"
+			type="com.trung.goodstore.web.action.ViewCategoryAction"
+			scope="request" validate="false">
+			<forward name="success" path="/pages/viewproductlist.jsp">
+			</forward>
+			<forward name="failure" path="/common/404.jsp"></forward>
+		</action>
+		<action path="/pages/addtocart"
+			type="com.trung.goodstore.web.action.AddToCartAction"
+			validate="false" scope="request">
+			<forward name="success" path="/pages/viewcart.do"></forward>
+		</action>
+		<action path="/pages/viewcart"
+			type="com.trung.goodstore.web.action.ViewCartAction" name="cartForm"
+			scope="session" validate="false">
+			<forward name="success" path="/pages/cart.jsp"></forward>
+		</action>
+		<action path="/pages/updatecart"
+			type="com.trung.goodstore.web.action.UpdateCartAction"
+			name="cartForm" input="/pages/cart.jsp" validate="true"
+			scope="session">
+			<forward name="success" path="/pages/cart.jsp"></forward>
+		</action>
+		<action path="/pages/deleteFromCart"
+			type="com.trung.goodstore.web.action.DeleteCartAction">
+			<forward name="success" path="/pages/cart.jsp"></forward>
+		</action>
+		<action path="/pages/emptycart"
+			type="com.trung.goodstore.web.action.EmptyCartAction">
+			<forward name="success" path="/pages/cart.jsp"></forward>
+		</action>
+		<action path="/pages/continueShopping"
+			type="com.trung.goodstore.web.action.ContinueShoppingAction">
+			<forward name="home" path="/pages/home.do"
+				redirect="true">
+			</forward>
+		</action>
+		<action path="/pages/productDetail"
+			type="com.trung.goodstore.web.action.ViewProductAction">
+			<forward name="success" path="/pages/productdetail.jsp"></forward>
+			<forward name="failure" path="/pages/home.do"></forward>
+		</action>
+		<action path="/pages/writeComment"
+			type="com.trung.goodstore.web.action.CommentAction"
+			input="/pages/productdetail.jsp" validate="true">
+			<forward name="success" path="/pages/productdetail.jsp"></forward>
+		</action>
+		<action path="/pages/delComment"
+			type="com.trung.goodstore.web.action.DelCommentAction"
+			input="/pages/productdetail.jsp" validate="true">
+			<forward name="success" path="/pages/productdetail.jsp"></forward>
+		</action>
+		<action path="/manufacturerInfo"
+			type="com.trung.goodstore.web.action.MFInfoAction">
+			<forward name="success" path="/pages/mfinfo.jsp"></forward>
+		</action>
+		<!-- check out  -->
+		<action path="/pages/billing" name="billingForm" scope="session"
+			type="com.trung.goodstore.web.action.CheckoutAction"
+			input="/pages/cart.jsp" validate="false" parameter="mt_code">
+			<forward name="success" path="/pages/billing.jsp"></forward>
+		</action>
+		<action path="/pages/saveBillInfo" name="billingForm"
+			type="com.trung.goodstore.web.action.CheckoutAction" scope="session"
+			validate="true" input="/pages/billing.jsp" parameter="mt_code">
+			<forward name="ship"
+				path="/pages/shipping.do?mt_code=fillshipinfo" redirect="true">
+			</forward>
+			<forward name="choose"
+				path="/pages/choosemethod.do?mt_code=cmethod" redirect="true">
+			</forward>
+		</action>
+		<action path="/pages/shipping" name="shippingForm"
+			scope="session" validate="false" parameter="mt_code"
+			input="/pages/shipping.jsp"
+			type="com.trung.goodstore.web.action.CheckoutAction">
+			<forward name="success" path="/pages/shipping.jsp"></forward>
+		</action>
+		<action path="/pages/saveShipInfo" name="shippingForm"
+			type="com.trung.goodstore.web.action.CheckoutAction"
+			input="/pages/shipping.jsp" scope="session" parameter="mt_code"
+			validate="true">
+			<forward name="success"
+				path="/pages/choosemethod.do?mt_code=cmethod" redirect="true">
+			</forward>
+		</action>
+		<action path="/pages/choosemethod"
+			type="com.trung.goodstore.web.action.CheckoutAction" validate="false"
+			scope="session" parameter="mt_code">
+			<forward name="success" path="/pages/choosemethod.jsp"></forward>
+			<forward name="failure" path="/pages/shipping.jsp"></forward>
+		</action>
+
+		<action path="/pages/processchoosemethod"
+			name="chooseMethodForm" input="/pages/choosemethod.jsp"
+			type="com.trung.goodstore.web.action.CheckoutAction" validate="true"
+			scope="session" parameter="mt_code">
+			<forward name="postoffice" path="/pages/posthelp.jsp"></forward>
+			<forward name="paypal" path="/pages/payinfo.jsp"></forward>
+			<forward name="failure" path="/common/403.jsp"
+				redirect="true">
+			</forward>
+			<forward name="success" path="/pages/reviewcart.jsp">
+			</forward>
+			<forward name="cart" path="/pages/viewcart.do"></forward>
+		</action>
+
+		<action path="/pages/completeOrder"
+			type="com.trung.goodstore.web.action.CompleteOrderAction">
+			<forward name="success" path="/pages/receipt.jsp"
+				redirect="true">
+			</forward>
+			<forward name="failure" path="/common/403.jsp"
+				redirect="true">
+			</forward>
+		</action>
+
+
+
+
+		<!-- admin -->
+
+		<action path="/admin/productForm" name="productForm"
+			type="com.trung.goodstore.web.action.ProductAction" validate="true"
+			input="/admin/productform.jsp" scope="request" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success"
+				path="/admin/product.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/productEdit" name="productForm"
+			type="com.trung.goodstore.web.action.ProductAction" validate="true"
+			input="/admin/productedit.jsp" scope="request" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success"
+				path="/admin/product.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/product" scope="request" name="productForm"
+			type="com.trung.goodstore.web.action.ProductAction" validate="false"
+			parameter="method">
+			<forward name="listdo"
+				path="/admin/product.do?method=list">
+			</forward>
+			<forward name="addnew" path="/admin/productform.jsp"></forward>
+			<forward name="edit" path="/admin/productedit.jsp"></forward>
+			<forward name="list" path="/admin/productlist.jsp"></forward>
+		</action>
+
+		<action path="/admin/categoryForm" name="categoryForm"
+			type="com.trung.goodstore.web.action.CategoryAction" validate="true"
+			input="/admin/categoryform.jsp" scope="request" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success"
+				path="/admin/category.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/categoryEdit" name="categoryForm"
+			type="com.trung.goodstore.web.action.CategoryAction" validate="true"
+			input="/admin/categoryedit.jsp" scope="request" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success"
+				path="/admin/category.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/category"
+			type="com.trung.goodstore.web.action.CategoryAction" scope="request"
+			validate="false" parameter="method" name="categoryForm">
+			<forward name="listdo"
+				path="/admin/category.do?method=list">
+			</forward>
+			<forward name="addnew" path="/admin/categoryform.jsp"></forward>
+			<forward name="edit" path="/admin/categoryedit.jsp"></forward>
+			<forward name="list" path="/admin/categorylist.jsp"></forward>
+		</action>
+		<action path="/admin/mf"
+			type="com.trung.goodstore.web.action.ManufacturerAction"
+			scope="request" validate="false" parameter="method" name="mfForm">
+			<forward name="new" path="/admin/manufacturerform.jsp"></forward>
+			<forward name="edit" path="/admin/manufactureredit.jsp"></forward>
+			<forward name="list" path="/admin/manufacturerlist.jsp"></forward>
+			<forward name="listdo" path="/admin/mf.do?method=list"></forward>
+		</action>
+		<action path="/admin/mfForm" name="mfForm"
+			input="/admin/manufacturerform.jsp"
+			type="com.trung.goodstore.web.action.ManufacturerAction"
+			scope="request" validate="true" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success" path="/admin/mf.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/mfEdit" name="mfForm"
+			input="/admin/manufactureredit.jsp"
+			type="com.trung.goodstore.web.action.ManufacturerAction"
+			scope="request" validate="true" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success" path="/admin/mf.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/country" name="countryForm"
+			type="com.trung.goodstore.web.action.CountryAction" scope="request"
+			validate="false" parameter="method">
+			<forward name="new" path="/admin/countryform.jsp"></forward>
+			<forward name="edit" path="/admin/countryedit.jsp"></forward>
+			<forward name="list" path="/admin/countrylist.jsp"></forward>
+			<forward name="listdo"
+				path="/admin/country.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/countryForm" name="countryForm"
+			input="/admin/countryform.jsp"
+			type="com.trung.goodstore.web.action.CountryAction" scope="request"
+			validate="true" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success"
+				path="/admin/country.do?method=list">
+			</forward>
+		</action>
+
+		<action path="/admin/countryEdit" name="countryForm"
+			input="/admin/countryedit.jsp"
+			type="com.trung.goodstore.web.action.CountryAction" scope="request"
+			validate="true" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success"
+				path="/admin/country.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/province" name="provinceForm"
+			type="com.trung.goodstore.web.action.ProvinceAction" scope="request"
+			validate="false" parameter="method">
+			<forward name="new" path="/admin/provinceform.jsp"></forward>
+			<forward name="edit" path="/admin/provinceedit.jsp"></forward>
+			<forward name="list" path="/admin/provincelist.jsp"></forward>
+			<forward name="listdo"
+				path="/admin/province.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/provinceForm" name="provinceForm"
+			input="/admin/provinceform.jsp"
+			type="com.trung.goodstore.web.action.ProvinceAction" scope="request"
+			validate="true" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success"
+				path="/admin/province.do?method=list">
+			</forward>
+		</action>
+
+		<action path="/admin/provinceEdit" name="provinceForm"
+			input="/admin/provinceedit.jsp"
+			type="com.trung.goodstore.web.action.ProvinceAction" scope="request"
+			validate="true" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success"
+				path="/admin/province.do?method=list">
+			</forward>
+		</action>
+
+
+		<action path="/admin/shipMethod" name="shipMethodForm"
+			type="com.trung.goodstore.web.action.ShipMethodAction"
+			scope="request" validate="false" parameter="method">
+			<forward name="new" path="/admin/shipMethodform.jsp"></forward>
+			<forward name="edit" path="/admin/shipMethodedit.jsp"></forward>
+			<forward name="list" path="/admin/shipMethodlist.jsp"></forward>
+			<forward name="listdo"
+				path="/admin/shipMethod.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/shipMethodForm" name="shipMethodForm"
+			input="/admin/shipMethodform.jsp"
+			type="com.trung.goodstore.web.action.ShipMethodAction"
+			scope="request" validate="true" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success"
+				path="/admin/shipMethod.do?method=list">
+			</forward>
+		</action>
+
+		<action path="/admin/shipMethodEdit" name="shipMethodForm"
+			input="/admin/shipMethodedit.jsp"
+			type="com.trung.goodstore.web.action.ShipMethodAction"
+			scope="request" validate="true" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success"
+				path="/admin/shipMethod.do?method=list">
+			</forward>
+		</action>
+
+		<action path="/admin/shiprate" name="shiprateForm"
+			type="com.trung.goodstore.web.action.ShiprateAction" scope="request"
+			validate="false" parameter="method">
+			<forward name="new" path="/admin/shiprateform.jsp"></forward>
+			<forward name="edit" path="/admin/shiprateedit.jsp"></forward>
+			<forward name="list" path="/admin/shipratelist.jsp"></forward>
+			<forward name="listdo"
+				path="/admin/shiprate.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/shiprateForm" name="shiprateForm"
+			input="/admin/shiprateform.jsp"
+			type="com.trung.goodstore.web.action.ShiprateAction" scope="request"
+			validate="true" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success"
+				path="/admin/shiprate.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/shiprateEdit" name="shiprateForm"
+			input="/admin/shiprateedit.jsp"
+			type="com.trung.goodstore.web.action.ShiprateAction" scope="request"
+			validate="true" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success"
+				path="/admin/shiprate.do?method=list">
+			</forward>
+		</action>
+
+		<action path="/admin/user" name="userForm"
+			type="com.trung.goodstore.web.action.UserAction" scope="request"
+			validate="false" parameter="method">
+			<forward name="new" path="/admin/userform.jsp"></forward>
+			<forward name="edit" path="/admin/useredit.jsp"></forward>
+			<forward name="grant" path="/admin/usergrant.jsp"></forward>
+			<forward name="list" path="/admin/userlist.jsp"></forward>
+			<forward name="listdo" path="/admin/user.do?method=list">
+			</forward>
+			<forward name="failure" path="/admin/user.do?method=list">
+			</forward>
+
+		</action>
+		<action path="/admin/userG" name="userG"
+			input="/admin/usergrant.jsp"
+			type="com.trung.goodstore.web.action.UserAction" scope="request"
+			validate="true" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success" path="/admin/user.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/userForm" name="userForm"
+			input="/admin/userform.jsp"
+			type="com.trung.goodstore.web.action.UserAction" scope="request"
+			validate="true" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success" path="/admin/user.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/userEdit" name="userForm"
+			input="/admin/useredit.jsp"
+			type="com.trung.goodstore.web.action.UserAction" scope="request"
+			validate="true" parameter="method">
+			<set-property property="cancellable" value="true" />
+			<forward name="success" path="/admin/user.do?method=list">
+			</forward>
+		</action>
+		<action path="/admin/order"
+			type="com.trung.goodstore.web.action.OrderAction" scope="request"
+			validate="false" parameter="method">
+			<forward name="view" path="/admin/orderview.jsp"></forward>
+			<forward name="list" path="/admin/orderlist.jsp"></forward>
+			<forward name="listdo" path="/admin/order.do?method=list"
+				redirect="true">
+			</forward>
+			<forward name="failure"
+				path="/admin/order.do?method=list">
+			</forward>
+
+		</action>
+
+
+		<!-- cònig -->
+		<action path="/admin/editconfig" name="configForm"
+			type="com.trung.goodstore.web.action.ConfigAction"
+			parameter="mt_code" scope="request" validate="false">
+			<forward name="success" path="/pages/config.jsp"></forward>
+		</action>
+		<action path="/admin/saveconfig" name="configForm"
+			input="/pages/config.jsp"
+			type="com.trung.goodstore.web.action.ConfigAction"
+			parameter="mt_code" scope="request" validate="true">
+			<forward name="success" path="/pages/config.jsp"></forward>
+		</action>
+		<!-- user pages -->
+		<action path="/userpages/order"
+			type="com.trung.goodstore.web.action.UserOrderAction" scope="request"
+			validate="false" parameter="method">
+			<forward name="view" path="/userpages/orderview.jsp"></forward>
+			<forward name="list" path="/userpages/orderlist.jsp"></forward>
+			<forward name="listdo"
+				path="/userpages/order.do?method=list" redirect="true">
+			</forward>
+			<forward name="failure"
+				path="/userpages/order.do?method=list">
+			</forward>
+
+		</action>
+	</action-mappings>
+
+
+	<controller contentType="text/html;charset=utf-8" maxFileSize="2M"
+		memFileSize="512K">
+		<set-property property="processorClass"
+			value="org.springframework.web.struts.DelegatingRequestProcessor" />
+	</controller>
+
+	<message-resources
+		parameter="com.trung.goodstore.web.ApplicationResources" />
+	<!-- ========== Plug Ins Configuration ================================== -->
+
+	<plug-in className="net.sf.navigator.menu.MenuPlugIn">
+		<set-property property="menuConfig"
+			value="/WEB-INF/menu-config.xml" />
+	</plug-in>
+	<!-- Validator plugin  -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+	</plug-in>
+
+	<!-- Spring plugin -->
+	<plug-in
+		className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+			value="/WEB-INF/classes/applicationContext*.xml" />
+	</plug-in>
+</struts-config>
+

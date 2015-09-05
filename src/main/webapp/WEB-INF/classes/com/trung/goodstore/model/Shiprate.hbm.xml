@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.trung.goodstore.model.Shiprate"
+		table="cuocphivc">
+		<id name="id" column="maso">
+			<generator class="native" />
+		</id>
+		<property name="name" length="32" column="Tenmota" />
+		<property name="from" column="trongluongtu"/>
+		<property name="to" column="trongluongtoi"/>
+		<property name="price" column="dongia" />
+		<property name="levAmout" column="trongluongnactiep" />
+		<property name="levPrice" column="gianactiep" />
+		<many-to-one name="method" lazy="false"
+			class="com.trung.goodstore.model.ShipMethod" cascade="save-update"
+			column="maphuongthuc">
+		</many-to-one>
+		<set name="provinces" table="dongcuocvc"
+			cascade="save-update">
+			<key column="maso"></key>
+			<many-to-many column="matinh"
+				class="com.trung.goodstore.model.Province">
+			</many-to-many>
+		</set>
+		
+	</class>
+
+</hibernate-mapping>

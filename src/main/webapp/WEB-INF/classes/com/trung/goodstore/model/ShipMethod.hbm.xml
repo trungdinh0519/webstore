@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.trung.goodstore.model.ShipMethod"
+		table="phuongthucvc">
+		<id name="id" column="maphuongthuc">
+			<generator class="native" />
+		</id>
+		<property name="name" length="64" not-null="true" unique="true"
+			column="ten" />
+		<property name="desc" column="mota" type="text"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,112 @@
+#productlist{
+	width:100%
+	}
+#productlist table.list thead tr {
+	background-color: #9c9;
+	background-image: url(../images/cam_midle.jpg);
+	background-position: top;
+	border: 1px solid #8eb4ce;
+	
+}
+#productlist table.list thead th {
+	text-align:left;
+	padding: 6px 4px 6px 4px;
+	}
+#productlist table.list {
+	width: 100%;	
+	margin: 20px 0 10px 0 !important;
+}
+#productlist table.list span.pagebanner {
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px 4px 2px 4px;
+	width: 98%;
+	margin-top: 10px;
+	display: block;
+	border-bottom: none;
+}
+#productlist table.list th,td{
+	font-size:8pt;
+
+}
+.lineproduct .protsortdesc {
+	padding-left: 10px;
+	margin: 0px 0px 0px 120px;
+}
+.lineproduct .protsortdesc a {
+	color: #663333;
+	font-weight: bold;
+	text-decoration: none;
+}
+.lineproduct {
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CC9900;
+}
+.lineproduct .protsortdesc form {
+	margin: 0px;
+	padding: 0px;
+}
+.lineproduct img {
+	float: left;
+	margin:0 0 0 20px;
+}
+.clear {
+	margin: 0px;
+	padding: 0px;
+	clear: both;
+}
+.lineproduct .protsortdesc .price {
+	color: #3399CC;
+	font-size: 8pt;
+}
+.lineproduct .protsortdesc #addcart {
+	margin-top: 3px;
+	margin-left: 0px;
+}
+.lineproduct .protsortdesc .price {
+	color: #CC0000;
+	font-size: 8pt;
+	font-weight: bold;
+}
+.lineproduct .protsortdesc .price3 {
+	color: #FF0000;
+	font-weight: bold;
+	font-size: 8pt;
+}
+.lineproduct .protsortdesc .price2 {
+	text-decoration: line-through;
+	color: #333333;
+	font-weight: normal;
+	font-size: 8pt;
+}
+
+
+
+.price_2 {
+	text-decoration: line-through;
+	font-weight: bold;
+	font-size: 8pt;
+}
+.price_3 {
+	font-size: 8pt;
+	font-weight: bold;
+	color: #FF0000;
+}
+.price_1 {
+	font-weight: bold;
+	color: #663333;
+	font-size: 8pt;
+}
+.masanpham {
+	color: #990000;
+}
+.lineproduct .protsortdesc #instock {
+	width: 150px;
+	float: left;
+}
+.lineproduct .protsortdesc #addcartbutton {
+	margin-left: 200px;
+}

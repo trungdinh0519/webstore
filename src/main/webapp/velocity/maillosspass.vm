@@ -1,0 +1,12 @@
+<html>
+<body>
+<h3>Hi </h3>
+<p>
+This email has been sent from ${url}
+<p>New Password: ${pass}</p>
+------------------------------------------------
+
+
+</body>
+
+</html>

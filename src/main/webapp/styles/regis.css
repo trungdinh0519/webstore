@@ -1,0 +1,33 @@
+.userform{
+}
+.userform fieldset{
+	margin: 10px;
+	padding: 10px;
+}
+.userform label {
+ margin-top: .33em;
+ display: block;
+}
+.userform .red {
+color:#F60;
+}
+.userform input {
+ display: block;
+}
+.userform .register {
+	float: left;
+	position:relative;
+	padding-left:30px;
+}
+.userform .contactinfo {
+	float:left;
+	margin:10 10 10 20px;	
+}
+.userform .button{
+	clear:both;
+	vertical-align:middle;
+	padding:20px 0px 10px 30px;
+}
+.userform .button input{
+display:inline;
+}

@@ -1,0 +1,21 @@
+  <tr>
+                  <td class="genericLabel"><fmt:message key="label.product.dateAdded"/><label class="req">
+								*
+							</label></td>
+                  <td><html:text property="dateAdded"/><html:errors property="dateAdded"/>
+				   <SCRIPT language=JavaScript id=jscal1xx>
+						var cal1xx = new CalendarPopup("testdiv1");
+						cal1xx.showNavigationDropdowns();
+						 cal1xx.setYearSelectStartOffset(60);						
+				   </SCRIPT>
+				  <A id="anchor1" 
+      				onclick="cal1xx.select(document.forms[0].dateAdded,'anchor1','dd/MM/yyyy'); return false;" 
+     				href="#" name="anchor1"><img border="0" src="<c:url value="/images/calbtn.gif"/>"/></A>
+					<DIV id=testdiv1 
+      				style="VISIBILITY: hidden; POSITION: absolute; BACKGROUND-COLOR: white; layer-background-color: white">					</td>
+                </tr>
+                
+<script type="text/javascript" src="<c:url value="/scripts/CalendarPopup.js"/>"></script>
+			<SCRIPT language=JavaScript>document.write(getCalendarStyles());</SCRIPT>
+		
+	

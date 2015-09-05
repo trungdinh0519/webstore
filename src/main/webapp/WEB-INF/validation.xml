@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+
+	<!--
+		This is a blank Validator form file with a commented examples.
+	-->
+
+	<global>
+
+		<!-- An example global constant
+			<constant>
+			<constant-name>postalCode</constant-name>
+			<constant-value>^\d{5}\d*$</constant-value>
+			</constant>
+			end example-->
+		<constant>
+			<constant-name>phone</constant-name>
+			<constant-value>
+				^\(?(\d{3})(\d?)\)?[-| ]?(\d{3})[-| ]?(\d{4})$
+			</constant-value>
+		</constant>
+		<constant>
+			<constant-name>zip</constant-name>
+			<constant-value>^\d{5}\d*$</constant-value>
+		</constant>
+
+	</global>
+	<formset>
+		<form name="passForm">
+			<field property="olePass"
+				depends="required,minlength,maxlength,mask">
+				<arg0 key="label.password" />
+				<arg1 key="${var:minlength}" name="minlength"
+					resource="false" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>6</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>64</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9a-zA-Z]*$</var-value>
+				</var>
+			</field>
+			<field property="newPass"
+				depends="required,minlength,maxlength,mask">
+				<arg0 key="label.password" />
+				<arg1 key="${var:minlength}" name="minlength"
+					resource="false" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>6</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>64</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9a-zA-Z]*$</var-value>
+				</var>
+			</field>
+			<field property="cfPass"
+				depends="required,minlength,maxlength,mask">
+				<arg0 key="label.password" />
+				<arg1 key="${var:minlength}" name="minlength"
+					resource="false" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>6</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>64</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9a-zA-Z]*$</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="userForm">
+			<field property="username"
+				depends="required,minlength,maxlength">
+				<arg0 key="label.username" />
+				<arg1 name="minlength" key="${var:minlength}"
+					resource="false" />
+				<arg2 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>4</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="password"
+				depends="required,minlength,maxlength,mask">
+				<arg0 key="label.password" />
+				<arg1 key="${var:minlength}" name="minlength"
+					resource="false" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>6</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>64</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9a-zA-Z]*$</var-value>
+				</var>
+			</field>
+			<field property="confirmPassword"
+				depends="required,validwhen">
+				<arg0 key="label.confirmPassword" />
+				<arg1 key="label.password" />
+				<msg name="validwhen" key="error.password.match" />
+				<var>
+					<var-name>test</var-name>
+					<var-value>(*this*==password)</var-value>
+				</var>
+			</field>
+			<field property="firstname" depends="required,maxlength">
+				<arg0 key="label.firstname" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				</var>
+
+			</field>
+			<field property="lastname" depends="required">
+				<arg0 key="label.lastname" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				</var>
+			</field>
+			<field property="email"
+				depends="required,email,maxlength">
+				<arg0 key="label.email" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="phone" depends="required,mask,maxlength">
+				<arg0 key="label.phone" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${phone}</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				</var>
+			</field>
+
+			<field property="address.address"
+				depends="required,maxlength">
+				<arg0 key="label.address" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="address.city"
+				depends="required,maxlength">
+				<arg0 key="label.city" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>40</var-value>
+				</var>
+			</field>
+			<field property="address.province"
+				depends="required,maxlength">
+				<arg0 key="label.province" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>40</var-value>
+				</var>
+			</field>
+			<field property="address.country" depends="required">
+				<arg0 key="label.country" />
+			</field>
+			<field property="address.postalCode"
+				depends="required,mask">
+				<arg0 key="label.postalCode" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${zip}</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="UserInfo">
+			<field property="username"
+				depends="required,minlength,maxlength">
+				<arg0 key="label.username" />
+				<arg1 name="minlength" key="${var:minlength}"
+					resource="false" />
+				<arg2 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>4</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="firstname" depends="required,maxlength">
+				<arg0 key="label.firstname" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				</var>
+
+			</field>
+			<field property="lastname" depends="required">
+				<arg0 key="label.lastname" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				</var>
+			</field>
+			<field property="email"
+				depends="required,email,maxlength">
+				<arg0 key="label.email" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="phone" depends="required,mask,maxlength">
+				<arg0 key="label.phone" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${phone}</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				</var>
+			</field>
+
+			<field property="address.address"
+				depends="required,maxlength">
+				<arg0 key="label.address" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="address.city"
+				depends="required,maxlength">
+				<arg0 key="label.city" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>40</var-value>
+				</var>
+			</field>
+			<field property="address.province"
+				depends="required,maxlength">
+				<arg0 key="label.province" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>40</var-value>
+				</var>
+			</field>
+			<field property="address.country" depends="required">
+				<arg0 key="label.country" />
+			</field>
+			<field property="address.postalCode"
+				depends="required,mask">
+				<arg0 key="label.postalCode" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${zip}</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="lossPass">
+			<field property="username"
+				depends="required,minlength,maxlength">
+				<arg0 key="label.username" />
+				<arg1 name="minlength" key="${var:minlength}"
+					resource="false" />
+				<arg1 key="${var:maxlength}" name="maxlength"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>3</var-value>
+				</var>
+			</field>
+			<field property="email" depends="required,email">
+				<arg0 key="label.email" />
+			</field>
+		</form>
+		<form name="productForm">
+			<field property="name" depends="required">
+				<arg0 key="label.product.name" />
+			</field>
+			<field property="unitPrice" depends="required">
+				<arg0 key="label.product.price" />
+
+			</field>
+			<field property="weight" depends="required,double">
+				<arg0 key="label.product.weight" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]*[.]?[0-9]*$</var-value>
+				</var>
+			</field>
+			<field property="category" depends="required">
+				<arg0 key="label.product.catalog" />
+			</field>
+		</form>
+		<form name="categoryForm">
+			<field property="name" depends="required">
+				<arg0 key="label.category.name" />
+			</field>
+		</form>
+		<form name="mfForm">
+			<field property="name" depends="required,maxlength">
+				<arg0 key="label.mf.name" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="email" depends="required,email">
+				<arg0 key="label.mf.email" />
+
+			</field>
+		</form>
+		<form name="countryForm">
+			<field property="name" depends="required,maxlength">
+				<arg0 key="label.country.name" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>64</var-value>
+				</var>
+			</field>
+			<field property="code2"
+				depends="required,maxlength,minlength">
+				<arg0 key="label.country.code2" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+				<arg1 name="minlength" key="${var:minlength}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>2</var-value>
+				</var>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>2</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="shipMethodForm">
+			<field property="name" depends="required,maxlength">
+				<arg0 key="label.country.name" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>64</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="provinceForm">
+			<field property="name" depends="required,maxlength">
+				<arg0 key="label.province.name" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>64</var-value>
+				</var>
+			</field>
+			<field property="code"
+				depends="required,maxlength,minlength">
+				<arg0 key="label.province.code" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+				<arg1 name="minlength" key="${var:minlength}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>5</var-value>
+
+				</var>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>2</var-value>
+				</var>
+
+			</field>
+			<field property="country" depends="required">
+				<arg0 key="label.country.lbl" />
+			</field>
+		</form>
+		<form name="shiprateForm">
+			<field property="name" depends="required,maxlength">
+				<arg0 key="label.shiprate.name" />
+				<arg1 name="maxlength" key="${var:maxlegth}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				</var>
+
+			</field>
+			<field property="from" depends="required,mask">
+				<arg0 key="label.shiprate.from" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]*[.]?[0-9]*$</var-value>
+				</var>
+
+			</field>
+
+			<field property="to" depends="required,mask">
+				<arg0 key="label.shiprate.to" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]*[.]?[0-9]*$</var-value>
+				</var>
+			</field>
+			<field property="price" depends="required,mask">
+				<arg0 key="label.shiprate.price" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]*[.]?[0-9]*$</var-value>
+				</var>
+			</field>
+			<field property="shipMethod" depends="required">
+				<arg0 key="label.shiprate.method" />
+			</field>
+		</form>
+		<form name="billingForm">
+			<field property="firstname" depends="required">
+				<arg0 key="label.firstname" />
+			</field>
+			<field property="lastname" depends="required">
+				<arg0 key="label.lastname" />
+			</field>
+
+			<field property="phone" depends="required,mask">
+				<arg0 key="label.phone" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${phone}</var-value>
+				</var>
+			</field>
+			<field property="address" depends="required,maxlength">
+				<arg0 key="label.address" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="city" depends="required,maxlength">
+				<arg0 key="label.city" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>40</var-value>
+				</var>
+			</field>
+			<field property="province" depends="required,maxlength">
+				<arg0 key="label.province" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>40</var-value>
+				</var>
+			</field>
+			<field property="country" depends="required,maxlength">
+				<arg0 key="label.country" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>40</var-value>
+				</var>
+			</field>
+
+		</form>
+		<form name="shippingForm">
+			<field property="firstname" depends="required">
+				<arg0 key="label.firstname" />
+			</field>
+			<field property="lastname" depends="required">
+				<arg0 key="label.lastname" />
+			</field>
+
+			<field property="phone" depends="required,mask">
+				<arg0 key="label.phone" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${phone}</var-value>
+				</var>
+			</field>
+			<field property="address" depends="required,maxlength">
+				<arg0 key="label.address" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="city" depends="required,maxlength">
+				<arg0 key="label.city" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>40</var-value>
+				</var>
+			</field>
+			<field property="province" depends="required,maxlength">
+				<arg0 key="label.province" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>40</var-value>
+				</var>
+			</field>
+			<field property="country" depends="required,maxlength">
+				<arg0 key="label.country" />
+				<arg1 name="maxlength" key="${var:maxlength}"
+					resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>40</var-value>
+				</var>
+			</field>
+
+		</form>
+		<form name="chooseMethodForm">
+			<field property="shipmethod" depends="required">
+				<arg0 key="chooseshipmethod.name.title" />
+			</field>
+		</form>
+		<form name="creditCardForm">
+			<field property="number" depends="required,creditCard">
+				<arg0 key="label.creditcard.number" />
+			</field>
+			<field property="type" depends="required">
+				<arg0 key="label.creditcard.type" />
+			</field>
+			<field property="expdate_month" depends="required">
+				<arg0 key="label.creditcard.expdate_month" />
+			</field>
+			<field property="expdate_year" depends="required">
+				<arg0 key="label.creditcard.expdate_year" />
+
+			</field>
+			<field property="firstname">
+				<arg0 key="label.creditcard.firstname" />
+			</field>
+			<field property="lastname">
+				<arg0 key="label.creditcard.lastname" />
+			</field>
+			<field property="cvv2_number" depends="required">
+				<arg0 key="label.creditcard.cvv2_number" />
+			</field>
+		</form>
+		<form name="configForm">
+			<field property="moitruong" depends="required">
+				<arg0 key="label.config.moitruong" />
+			</field>
+			<field property="businessemail" depends="required,email">
+				<arg0 key="label.config.businessemail" />
+			</field>
+			<field property="tencongty" depends="required">
+				<arg0 key="label.config.tencongty" />
+			</field>
+			<field property="diachi" depends="required">
+				<arg0 key="label.config.diachi" />
+			</field>
+			<field property="nguoinhantien" depends="required">
+				<arg0 key="label.config.nguoinhantien" />
+			</field>
+			<field property="emailSupport" depends="required,email">
+				<arg0 key="label.config.emailSupport" />
+			</field>
+			<field property="usd_vnd" depends="required,mask">
+				<arg0 key="label.config.usd_vnd" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]*[.]?[0-9]*$</var-value>
+				</var>
+			</field>
+		</form>
+	</formset>
+
+
+</form-validation>

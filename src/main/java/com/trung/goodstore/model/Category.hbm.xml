@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.trung.goodstore.model.Category" table="Danhmuc">
+		<id name="id" column="Madanhmuc">
+			<generator class="native" />
+		</id>
+		<property name="name" length="64" not-null="true" unique="true"
+			column="Tendanhmuc" />
+		<property name="desc" column="Mota" type="text" />
+		<many-to-one name="parent" lazy="false"
+			class="com.trung.goodstore.model.Category" cascade="all"
+			outer-join="auto" column="DMCha" />
+		<set name="childCategories" cascade="all" inverse="true">
+			<key column="DMCha" />
+			<one-to-many class="com.trung.goodstore.model.Category"/>
+			
+		</set>
+		<set name="products" cascade="all" inverse="true">
+			<key column="Madanhmuc"></key>
+			<one-to-many class="com.trung.goodstore.model.Product" />
+		</set>
+	</class>
+
+</hibernate-mapping>

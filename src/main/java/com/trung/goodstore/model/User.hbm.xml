@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class dynamic-update="true" dynamic-insert="true"
+		name="com.trung.goodstore.model.User" table="ThanhVien">
+		<id name="username" column="Dinhdanh">
+			<generator class="assigned" />
+		</id>
+		<property name="password" not-null="true" column="Matkhau"/>
+		<property name="confirmPassword" not-null="true" column="xacnhanMK"/>
+		<property name="firstName" length="32" not-null="true" column="Ten"/>
+		<property name="lastName" length="32" not-null="true" column="Hodem"/>
+		<property name="phone" length="32" not-null="true" column="Sodienthoai"/>
+		<property name="email" not-null="true" column="email"/>
+		<property name="website" ></property>
+		<property name="version"></property>
+
+		<component name="address"
+			class="com.trung.goodstore.model.Address">
+			<property name="address" column="diachi"/>
+
+			<property name="city" length="40" column="QuanHuyen" />
+
+			<property name="country" length="40" column="Quocgia"/>
+
+			
+			<property name="postalCode" length="10" column="MaBuuDien"/>
+
+		</component>
+		<set name="roles" table="ThanhVien_Quyen" cascade="save-update"
+			lazy="false">
+			<key column="username"></key>
+			<many-to-many column="Maquyen"
+				class="com.trung.goodstore.model.Role" />
+		</set>
+		<property name="enabled" type="yes_no" not-null="true"></property>
+		<property name="accountExpired" not-null="true" type="yes_no"></property>
+		<property name="accountLocked" not-null="true" type="yes_no"></property>
+		<property name="credentialsExpired" not-null="true"
+			type="yes_no">
+		</property>
+	</class>
+
+</hibernate-mapping>

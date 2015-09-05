@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.trung.goodstore.model.Country" table="Quocgia">
+
+		<id name="id" column="maquocgia" type="java.lang.Long">
+			<generator class="native"></generator>
+		</id>
+		<property name="code2" length="2" not-null="true" unique="true"
+			column="Ma2" />
+		<property name="code3" length="3" unique="true" column="Ma3" />
+
+		<property name="name" length="64" not-null="true" unique="true"
+			column="Ten" />
+		<set name="provinces" inverse="true" cascade="all"
+			lazy="true">
+			<key column="matinh" not-null="true"></key>
+			<one-to-many class="com.trung.goodstore.model.Province" />
+		</set>
+
+	</class>
+
+</hibernate-mapping>

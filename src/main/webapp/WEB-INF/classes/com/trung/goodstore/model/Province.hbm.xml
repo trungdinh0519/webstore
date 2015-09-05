@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.trung.goodstore.model.Province"
+		table="tinhthanh">
+
+		<id name="id" column="matinh" type="java.lang.Long">
+			<generator class="native"></generator>
+		</id>
+
+		<property name="code" length="6" not-null="true" column="macode" />
+
+		<property name="name" length="64" not-null="true" column="tentinh" />
+		
+		<many-to-one name="country" lazy="false"
+			class="com.trung.goodstore.model.Country" column="maquocgia"
+			cascade="save-update">
+		</many-to-one>
+		<set name="shiprates" table="dongcuocvc" lazy="true"
+			cascade="save-update">
+			<key column="matinh"></key>
+			<many-to-many column="maso"
+				class="com.trung.goodstore.model.Shiprate">
+			</many-to-many>
+		</set>
+
+	</class>
+
+</hibernate-mapping>

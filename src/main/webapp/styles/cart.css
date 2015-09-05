@@ -1,0 +1,57 @@
+.cart  th {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+	padding-top: 3px;
+	padding-right: 5px;
+	padding-bottom: 3px;
+	padding-left: 2px;
+}
+.cart .items {
+	width: 220px;
+}
+.cart .quantity {
+	width: 60px;
+}
+.cart .price {
+	width: 110px;
+}
+.cart .cartsubtotal {
+	width: 110px;
+}
+.cart thead {
+	background-color: #66CCCC;
+	border: 1px solid #CCC;
+}
+.cart .subtotal {
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+.cart td {
+	font-size: 12px;
+	text-align: left;
+	padding-top: 3px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+}
+.cart .update {
+	padding-top: 10px;
+	padding-bottom: 5px;
+	padding-left: 0px;
+}
+.buttonbarcenter {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.buttonbarcenter input {
+	margin-left: 5px;
+	width: 80px;
+}
+.managercart {
+	font-size: 14px;
+	color: #CC0000;
+	padding-left: 2px;
+	margin: 20px 0 0 0;
+	font-weight: bold;
+}

@@ -1,0 +1,148 @@
+#order{
+	width:100%;
+	margin:20px 0 0 0;
+	
+	}
+#order table.dh {
+	border: 1px solid #666;
+	width:100%;
+	font-size:11pt;
+}
+
+#order table.dh th,td {
+	text-align: left;
+	vertical-align: top;
+}
+#order table.dh td a{
+	text-decoration: none;
+}
+#order table.dh thead tr {
+	background-color: #9c9;
+}
+
+#order table.dh th.sorted {
+	background-color: orange;
+}
+
+#order table.dh th a,th a:visited {
+	color: black;
+}
+
+#order table.dh th a:hover {
+	text-decoration: none;
+	color: black;
+}
+
+#order table.dh th.sorted a,th.sortable a {
+	background-position: right;
+	display: block;
+
+}
+
+#order table.dh th.sortable a {
+	background-image: url(../img/arrow_off.png);
+}
+
+#order table.dh th#order1 a {
+	background-image: url(../img/arrow_down.png);
+}
+
+#order table.dh th#order2 a {
+	background-image: url(../img/arrow_up.png);
+}
+
+#order table.dh tr.odd {
+	background-color: #eec;
+}
+
+#order table.dh tr.tableRowEven,tr.even {
+	background-color: #ccb;
+}
+
+#order table.dh div.exportlinks {
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px 4px 2px 4px;
+	margin: 2px 0 10px 0;
+	width: 79%;
+}
+
+#order table.dh span.export {
+	padding: 0 4px 1px 20px;
+	display: inline;
+	display: inline-block;
+	cursor: pointer;
+}
+
+#order table.dh span.excel {
+	background-image: url(../img/ico_file_excel.png);
+}
+
+#order table.dh span.csv {
+	background-image: url(../img/ico_file_csv.png);
+}
+
+#order table.dh span.xml {
+	background-image: url(../img/ico_file_xml.png);
+}
+
+#order table.dh span.pdf {
+	background-image: url(../img/ico_file_pdf.png);
+}
+
+#order table.dh span.rtf {
+	background-image: url(../img/ico_file_rtf.png);
+}
+
+#order table.dh span.pagebanner {
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px 4px 2px 4px;
+	width: 79%;
+	margin-top: 10px;
+	display: block;
+	border-bottom: none;
+}
+
+#order table.dh span.pagelinks{
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px 4px 2px 4px;
+	width: 79%;
+	display: block;
+	border-top: none;
+	margin-bottom: -5px;
+}
+
+
+#order table.dh.group-1 {
+    font-weight:bold;
+    padding-bottom:10px;
+    border-top:1px solid black;
+}
+#order table.dh.group-2 {
+    font-style:italic;
+    border-top: 1px solid black;
+
+}
+#order table.dh .subtotal-sum, .grandtotal-sum {
+    font-weight:bold;
+    text-align:right;
+}
+#order table.dh .subtotal-header {
+    padding-bottom: 0px;
+    border-top: 1px solid white;
+}
+#order table.dh .subtotal-label, .grandtotal-label {
+    border-top: 1px solid white;
+    font-weight: bold;
+}
+#order table.dh .grouped-table tr.even {
+    background-color: #fff;
+}
+#order table.dh .grouped-table tr.odd {
+    background-color: #fff;
+}
+#order table.dh .grandtotal-row {
+    border-top: 2px solid black;
+}

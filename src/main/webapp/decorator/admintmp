@@ -1,0 +1,114 @@
+<%@ page language="java" pageEncoding="UTF-8"
+	contentType="text/html;charset=utf-8"%>
+<%@ include file="/common/taglibs.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<html:base />
+		<title><decorator:title default="goodstore" />
+		</title>
+		<link href="<c:url value="/styles/adminLayout.css"/>" rel="stylesheet"
+			type="text/css" />
+		<link href="<c:url value="/styles/messages.css"/>" rel="stylesheet"
+			type="text/css" />
+
+		<decorator:head />
+	</head>
+	<body
+		<decorator:getProperty property="body.onload" writeEntireProperty="true"></decorator:getProperty>
+		<decorator:getProperty property="body.id" writeEntireProperty="true"/>
+		<decorator:getProperty property="body.class" writeEntireProperty="true"/>>
+		<div id="header">
+			<h3>
+				<fmt:message>label.name.website.admin</fmt:message>
+			</h3>
+		</div>
+
+		<div id="breadcrumbs">
+			<div class="xright">
+				<a href="#">Trợ giúp</a>|
+				<a href="<c:url value="/logout.jsp"/>">Đăng xuất </a>
+			</div>
+			<div class="xleft">
+				<div class="white">
+
+					<fmt:message>label.name.website.admin</fmt:message>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div id="leftcolumn">
+			<div id="navcolumn">
+				<h5>
+					<html:link action="/admin/editconfig?mt_code=edit">
+						<fmt:message key="label.config" />
+
+					</html:link>
+				</h5>
+				<h5>
+					<a href="<c:url value="/admin/user.do?method=list"/>"><fmt:message
+							key="label.member" /> </a>
+				</h5>
+				<h5>
+					<a href="<c:url value="/admin/mf.do?method=list"/>"> <fmt:message
+							key="label.manufacturer" /> </a>
+				</h5>
+
+				<h5>
+					<a href="<c:url value="/admin/category.do?method=list"/>"> Danh mục</a>
+				</h5>
+				<h5>
+					<a href="<c:url value="/admin/product.do?method=list"/>"><fmt:message
+							key="label.product" /> </a>
+				</h5>
+
+				<h5>
+					<fmt:message key="label.location" />
+				</h5>
+				<ul>
+					<li>
+						<a href="<c:url value="/admin/country.do?method=list"/>"> <fmt:message
+								key="label.country" /> </a>
+					</li>
+					<li>
+						<a href="<c:url value="/admin/province.do?method=list"/>"><fmt:message
+								key="label.province" /> </a>
+					</li>
+				</ul>
+				<h5>
+					<fmt:message key="label.shiprate" />
+				</h5>
+				<ul>
+					<li>
+						<a href="<c:url value="/admin/shipMethod.do?method=list"/>"><fmt:message
+								key="label.shipmethod" /> </a>
+					</li>
+					<li>
+						<a href="<c:url value="/admin/shiprate.do?method=list"/>"><fmt:message
+								key="label.shiprate_incountry" /> </a>
+					</li>
+				</ul>
+				<h5>
+
+					<a href="<c:url value="/admin/order.do?method=list"/>"> <fmt:message
+							key="label.order" /> </a>
+				</h5>
+			</div>
+		</div>
+		<div id="bodycolumn">
+			<div id="section"">
+				<jsp:include page="/common/messages.jsp" />
+				<decorator:body></decorator:body>
+			</div>
+		</div>
+
+		<div id="footer">
+			<div class="xright">
+				<fmt:message>label.copyright</fmt:message>
+			</div>
+			<div class="clear">
+			</div>
+		</div>
+	</body>
+
+</html>

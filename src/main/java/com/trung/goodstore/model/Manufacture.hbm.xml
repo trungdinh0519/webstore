@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.trung.goodstore.model.Manufacturer"
+		table="Nhasanxuat">
+
+		<id name="id" column="Maso">
+			<generator class="native" />
+		</id>
+
+		<property name="desc" column="Mota" type="text"/>
+
+		<property name="email" />
+
+		<property name="name" unique="true" column="TenNSX" />
+
+		<property name="url" column="DCWebsite" />
+		<set name="products" cascade="save-update" inverse="true">
+			<key column="masanpham" ></key>
+			<one-to-many class="com.trung.goodstore.model.Product"/>
+		</set>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,57 @@
+.infocustomer h3 {
+	font-size: 13px;
+	font-weight: bold;
+	background-image: url(../images/bg_title.gif);
+	background-repeat: repeat-x;
+	padding: 3px 0 3px 5px;
+}
+.tableForm1 th {
+	font-size: 12px;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 8px;
+}
+#shipInfo h3 {
+	font-size: 13px;
+}
+.infocustomer .info {
+	padding-left: 10px;
+	display: block;
+	padding-top: 2px;
+	padding-right: 10px;
+	padding-bottom: 2px;
+}
+.buttonbarcenter {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.buttonbarcenter input {
+	margin-left: 5px;
+	width: 80px;
+}
+.shipselect th {
+	text-align: left;
+	font-size: 12px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 0px;
+}
+.shipselect thead {
+	background-color: #66CCCC;
+	
+}
+.shipselect td {
+	font-size: 12px;
+	padding: 5px 0 5px 0;
+}
+.shipselect {
+	margin-bottom: 30px;
+}
+
+
+
+#choosemethod h3 {
+	font-size: 13px;
+}

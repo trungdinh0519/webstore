@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.trung.goodstore.model.Order" dynamic-update="true"
+		dynamic-insert="true" table="Donhang">
+		<id name="id" column="madonhang">
+			<generator class="native" />
+		</id>
+		<property name="orderTotal" column="Tongtien" />
+		<property name="orderTax" column="TienThue" />
+		<property name="orderSubTotal" column="Tonggia" />
+		<property name="shipPrice" column="PhiVanchuyen" />
+		<property name="shipTax" column="ThueVanChuyen" />
+		<property name="orderDate" type="date" column="NgayDatHang" />
+
+		<property name="billToAddress" column="diachi_nguoimua" />
+		<property name="billToCity" length="40"
+			column="quanhuyen_nguoimua" />
+		<property name="billToCountry" length="40"
+			column="quocgia_nguoimua" />
+		<property name="billToProvince" length="40"
+			column="tinhthanh_nguoimua" />
+		<property name="billToPostalCode" length="10"
+			column="mabuudien_nguoimua" />
+		<property name="billToEmail" column="email_nguoimua" />
+		<property name="billToFirstName" length="32"
+			column="ten_nguoimua" />
+		<property name="billToLastName" length="32"
+			column="hodem_nguoimua" />
+		<property name="billToPhone" length="32" column="Sodt_nguoimua" />
+
+
+		<property name="shipToAddress" column="diachi_nguoinhan" />
+
+		<property name="shipToCity" length="40"
+			column="quanhuyen_nguoinhan" />
+
+		<property name="shipToCountry" length="40"
+			column="quocgia_nguoinhan" />
+
+		<property name="shipToProvince" length="40"
+			column="tinhthanh_nguoinhan" />
+
+		<property name="shipToPostalCode" length="5"
+			column="mabuudien_nguoinhan" />
+		<property name="shipToEmail" column="email_nguoinhan" />
+		<property name="shipToFirstName" length="32" not-null="true"
+			column="ten_nguoinhan" />
+		<property name="shipToLastName" length="32" not-null="true"
+			column="hodem_nguoinhan" />
+		<property name="shipToPhone" length="32" not-null="true"
+			column="sodienthoai_nguoinhan" />
+		<many-to-one name="status" lazy="false"
+			class="com.trung.goodstore.model.OrderStatus" cascade="save-update"
+			column="matrangthai" />
+		<many-to-one name="user" lazy="false"
+			class="com.trung.goodstore.model.User" cascade="save-update"
+			column="mathanhvien" />
+		<set name="orderItem" lazy="false" inverse="true"
+			cascade="all-delete-orphan">
+			<key column="maso"></key>
+			<one-to-many class="com.trung.goodstore.model.OrderItem" />
+		</set>
+		<property name="note" type="text" column="Ghichu" />
+	</class>
+</hibernate-mapping>

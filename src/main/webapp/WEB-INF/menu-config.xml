@@ -1,0 +1,33 @@
+<MenuConfig>
+	<Displayers>
+		<Displayer name="Simple"
+			type="net.sf.navigator.displayer.SimpleMenuDisplayer" />
+		<Displayer name="DropDown"
+			type="net.sf.navigator.displayer.DropDownMenuDisplayer" />
+		<Displayer name="Velocity"
+			type="net.sf.navigator.displayer.VelocityMenuDisplayer" />
+		<Displayer name="CSSListMenu"
+			type="net.sf.navigator.displayer.CSSListMenuDisplayer" />
+		<Displayer name="ListMenu"
+			type="net.sf.navigator.displayer.ListMenuDisplayer" />
+		<Displayer name="CoolMenu"
+			type="net.sf.navigator.displayer.CoolMenuDisplayer" />
+	</Displayers>
+	<Menus>
+		<Menu name="product" title="San pham">
+			<Item name="list" title="Danh sach san pham"
+				action="/admin/product.do?method=list"
+				roles="ROLE_ADMIN,ROLE_EMP,ROLE,MANAGER" />
+			<Item name="addnew" title="Them san pham"
+				action="/admin/product.do?method=addnew"
+				roles="ROLE_ADMIN,ROLE_EMP,ROLE_MANAGER">
+			</Item>
+		</Menu>
+		<Menu name="catalog" title="Danh muc">
+			<Item name="list" title="Danh sach san pham"
+				action="/admin/product.do?method=list"
+				roles="ROLE_ADMIN,ROLE_EMP,ROLE,MANAGER" />
+		</Menu>
+
+	</Menus>
+</MenuConfig>
